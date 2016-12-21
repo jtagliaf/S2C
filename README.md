@@ -1,7 +1,6 @@
 # S2C
-- General -
 
-A RabbitMQ-Stream, which takes images and converts them into Strings in order to handle them.
+A RabbitMQ-Stream, which takes images and converts them into strings in order to handle them.
 On the other side, consumers convert them back into Numpy Arrays and use some kind of image processing on those Pictures.
 
 == WebCamStream ==
