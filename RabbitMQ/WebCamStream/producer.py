@@ -24,16 +24,15 @@ VideoStream to RabbitMQ
 cap = cv2.VideoCapture(0)
 
 while(True):
-
-    ret, frame = cap.read() # capture frame by frame
-    img_str = cv2.imencode('.jpg', frame)[1].tostring() # array to String
+    ret, frame = cap.read()  # capture frame by frame
+    img_str = cv2.imencode('.jpg', frame)[1].tostring()  # array to String
 
     # Send the string and make the message persistent
-    channel.basic_publish(exchange='',
+    channel.basic_publish(
+        exchange='',
         routing_key='task_queue',
         body=img_str,
-        properties=pika.BasicProperties(
-        delivery_mode = 2, # make message persistent
-        ))
+        properties=pika.BasicProperties(delivery_mode=2,)
+        )
 
 connection.close()

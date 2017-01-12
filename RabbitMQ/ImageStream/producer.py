@@ -1,7 +1,8 @@
 #!/usr/bin/env python
+import os
 import pika
 import cv2
-import os
+
 from skimage import io
 
 """
@@ -34,12 +35,12 @@ x = 12000
 # verschicke das gebufferte Bild
 while x > 2:
 
-# Verschicke, den String und mache die Nachricht persistent
+    # Verschicke, den String und mache die Nachricht persistent
     channel.basic_publish(exchange='',
                           routing_key='task_queue2',
                           body=img_str,
                           properties=pika.BasicProperties(
-                             delivery_mode = 2, # make message persistent
+                             delivery_mode=2,  # make message persistent
                           ))
     x = x - 1
 print(" [x] Sent ")
