@@ -34,10 +34,10 @@ Bild umwandeln / senden
 img_str = "hello"
 
 # Setze die Menge an Bildern, welche erstellt werden  sollen
-x = 12000
+x = 10000
 
 # verschicke das gebufferte Bild
-while x > 2:
+while x > 0:
 
     # Verschicke, den String und mache die Nachricht persistent
     channel.basic_publish(exchange='Test',

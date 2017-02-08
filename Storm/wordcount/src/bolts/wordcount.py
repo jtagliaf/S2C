@@ -5,8 +5,8 @@ from collections import Counter
 
 from streamparse import Bolt
 
-
 class WordCountBolt(Bolt):
+    outputs = ['word', 'count']
     def initialize(self, conf, ctx):
         self.counts = Counter()
 
@@ -14,8 +14,9 @@ class WordCountBolt(Bolt):
     def process(self, tup):
         word = tup.values[0]
         self.counts[word] += 1
-        self.emit([word, self.counts[word]])
         self.logger.info('%s: %d' % (word, self.counts[word]))
+
+        self.emit([word, self.counts[word]])
 
 
 
